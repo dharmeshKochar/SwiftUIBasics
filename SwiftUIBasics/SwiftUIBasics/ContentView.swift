@@ -92,6 +92,12 @@ struct ContentView: View {
                         Text("Spin")
                             .bold().padding()
                     })
+                    NavigationLink(
+                        destination: SwiftUIView(),
+                        label: {
+                            Text("Next")
+                        })
+                    
                 Spacer()
             }
         }.navigationTitle("Deal for the day")
