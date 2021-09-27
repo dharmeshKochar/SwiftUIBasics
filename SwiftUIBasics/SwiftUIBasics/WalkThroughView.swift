@@ -16,6 +16,7 @@ struct WalkThroughView: View {
                 OnboardingView(imageName: image[0], title: titles[0], description: description[0])
                 OnboardingView(imageName: image[1], title: titles[1], description: description[1])
                 OnboardingView(imageName: image[2], title: titles[2], description: description[2])
+                
             }.tabViewStyle(PageTabViewStyle())
             .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
             .navigationTitle("Walkthrough")
@@ -29,6 +30,13 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack{
+            VStack{
+                Color.red
+                    .frame(height: UIScreen.main.bounds.height/2 - 60)
+                    .transition(.slide)
+                Spacer()
+            }
+            
             Rectangle()
                 .foregroundColor(.white)
                 .padding(32)
@@ -50,13 +58,23 @@ struct OnboardingView: View {
                     .fontWeight(.medium)
                     .multilineTextAlignment(.center)
                 Spacer()
+                NavigationLink(
+                        destination: MapView(),
+                        label: {
+                            Text("Skip")
+                                .frame(width: 160, height: 40)
+                                .background(Color.white)
+                                .shadow(color: Color.red.opacity(0.4), radius: 12, x: 0, y: 0)
+                                .shadow(color: Color.white.opacity(0.4), radius: -12, x: -12, y: 12)
+                            
+                        })
+                Spacer()
             } .padding(.horizontal,40)
             .transition(.slide)
         }
-        .background(Color.orange)
+        
     }
 }
-
 
 struct WalkThroughView_Previews: PreviewProvider {
     static var previews: some View {
